@@ -1,0 +1,8 @@
+{
+  "name": "mobile-toolkit",
+  "version": "1.0.0",
+  "description": "Complete mobile development toolkit with agents and skills",
+  "author": "alexey1312",
+  "agents": "./agents",
+  "skills": "./skills"
+}

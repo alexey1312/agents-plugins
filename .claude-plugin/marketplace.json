@@ -1,0 +1,18 @@
+{
+  "name": "aleksei-agents",
+  "description": "Mobile development agents and Xcode build skill",
+  "version": "1.0.0",
+  "owner": {
+    "name": "alexey1312",
+    "url": "https://github.com/alexey1312"
+  },
+  "pluginRoot": "./plugins",
+  "plugins": [
+    {
+      "name": "mobile-toolkit",
+      "description": "iOS, Android, Swift, Flutter agents + Xcode build skill",
+      "source": "./mobile-toolkit",
+      "category": "mobile"
+    }
+  ]
+}
