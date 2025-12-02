@@ -119,13 +119,19 @@ Instructions...
 | Agent | `android-developer` | Kotlin, Jetpack Compose |
 | Agent | `swift-expert` | Swift 5.9+, async/await |
 | Agent | `flutter-expert` | Cross-platform Flutter/Dart |
-| Skill | `xcode-builder` | Build/test via XcodeBuildMCP |
+| Skill | `xcode-builder` | Build/test via xcodebuild + xcsift TOON |
 | Skill | `to-toon` | JSON/XML/YAML → TOON format |
 | Command | `pr-summary` | Generate PR summary from branch changes |
 
-## XcodeBuildMCP
+## xcsift
 
-Always use `preferXcodebuild: true` to prevent token overflow. Use `simulatorId` (UUID) instead of `simulatorName`.
+Parse xcodebuild/swift output to TOON format:
+
+```bash
+swift build 2>&1 | xcsift -f toon --toon-key-folding safe
+```
+
+Install: `brew install ldomaradzki/tap/xcsift`
 
 ## Git
 
