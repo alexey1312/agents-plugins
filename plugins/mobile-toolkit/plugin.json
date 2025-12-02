@@ -4,5 +4,6 @@
   "description": "Complete mobile development toolkit with agents and skills",
   "author": "alexey1312",
   "agents": "./agents",
-  "skills": "./skills"
+  "skills": "./skills",
+  "commands": "./commands"
 }

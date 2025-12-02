@@ -4,108 +4,129 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-This is a private Claude Code plugin marketplace containing mobile development agents and skills. The marketplace can be installed via `/plugin marketplace add alexey1312/agents-marketplace`.
+Private Claude Code plugin marketplace with mobile development agents and skills.
 
-## Repository Structure
+```bash
+# Install
+/plugin marketplace add alexey1312/agents-marketplace
+/plugin install mobile-toolkit@aleksei-agents
+```
+
+## Structure
 
 ```
-.claude-plugin/marketplace.json   # Marketplace definition
+.claude-plugin/
+  marketplace.json          # Marketplace catalog
 plugins/
-  mobile-toolkit/                 # Main plugin
-    plugin.json                   # Plugin manifest
-    agents/                       # Agent definitions (markdown frontmatter)
+  mobile-toolkit/
+    plugin.json             # Plugin manifest
+    agents/                 # Agent definitions (.md with frontmatter)
+      ios-developer.md
+      android-developer.md
+      swift-expert.md
+      flutter-expert.md
     skills/
-      xcode-builder/              # Xcode build/test skill
-      to-toon/                    # TOON format converter skill
+      xcode-builder/        # XcodeBuildMCP integration
+      to-toon/              # JSON/XML → TOON converter
+    commands/
+      pr-summary.md         # Generate PR summary from branch changes
 ```
 
-## Plugin Marketplace Specification
+## Plugin Marketplace Spec
 
-Reference: https://code.claude.com/docs/en/plugin-marketplaces
+Docs: https://code.claude.com/docs/en/plugin-marketplaces
 
-### marketplace.json Schema
-
-**Required fields:**
-- `name` - Marketplace identifier (kebab-case)
-- `owner` - Maintainer info object (`name`, `url`)
-- `plugins` - Array of plugin entries
-
-**Optional fields:**
-- `metadata.description` - Brief overview
-- `metadata.version` - Marketplace version
-- `metadata.pluginRoot` - Base path for relative sources
-
-### Plugin Entry Schema
-
-**Required:** `name`, `source`
-
-**Optional:**
-- `description`, `version`, `author`, `homepage`, `repository`
-- `license` - SPDX identifier (e.g., MIT)
-- `keywords`, `tags`, `category` - Discovery/organization
-- `commands`, `agents`, `hooks`, `mcpServers` - Component paths
-
-### Source Types
+### marketplace.json
 
 ```json
-// Relative path
-"source": "./plugins/my-plugin"
-
-// GitHub repo
-"source": {"source": "github", "repo": "owner/repo"}
-
-// Git URL
-"source": {"source": "url", "url": "https://..."}
+{
+  "name": "marketplace-name",       // Required: kebab-case
+  "owner": {"name": "", "url": ""}, // Required
+  "plugins": [],                    // Required: plugin entries
+  "pluginRoot": "./plugins",        // Optional: base path
+  "description": "",                // Optional
+  "version": ""                     // Optional
+}
 ```
 
-### plugin.json Schema
+### Plugin Entry
 
-Located in each plugin directory. Defines paths to components:
-- `agents` - Path to agent definitions
-- `skills` - Path to skill definitions
-- `commands`, `hooks`, `mcpServers` - Other components
+```json
+{
+  "name": "plugin-name",            // Required
+  "source": "./path",               // Required: path, GitHub, or URL
+  "description": "",
+  "category": ""
+}
+```
 
-Environment variable `${CLAUDE_PLUGIN_ROOT}` resolves to plugin installation directory.
+Source types:
+- Relative: `"./plugins/my-plugin"`
+- GitHub: `{"source": "github", "repo": "owner/repo"}`
+- URL: `{"source": "url", "url": "https://..."}`
+
+### plugin.json
+
+```json
+{
+  "name": "plugin-name",
+  "agents": "./agents",
+  "skills": "./skills",
+  "commands": "./commands"
+}
+```
 
 ## Component Formats
 
-### Agent Format
-Agents are markdown files with YAML frontmatter:
+### Agent (.md)
+
 ```yaml
 ---
 name: agent-name
-description: Description for when to use this agent
-model: opus  # or sonnet, haiku
+description: When to use this agent
+model: opus  # opus | sonnet | haiku
 ---
-System prompt and instructions...
+System prompt...
 ```
 
-### Skill Format
-Skills use `SKILL.md` files with frontmatter:
+### Skill (SKILL.md)
+
 ```yaml
 ---
 name: skill-name
-description: When to invoke this skill
+description: When to invoke
 ---
-Instructions and commands...
+Instructions...
+```
+
+Use `${CLAUDE_PLUGIN_ROOT}` for paths to skill resources.
+
+### Command (.md)
+
+```yaml
+---
+description: When to use this command
+allowed-tools: Bash(git *), Read, Glob, Grep
+---
+Instructions...
 ```
 
 ## Available Components
 
-**Agents** (`plugins/mobile-toolkit/agents/`):
-- `ios-developer` - SwiftUI, UIKit, Core Data
-- `android-developer` - Kotlin, Jetpack Compose
-- `swift-expert` - Swift 5.9+, async/await, protocols
-- `flutter-expert` - Cross-platform Flutter/Dart
+| Type | Name | Description |
+|------|------|-------------|
+| Agent | `ios-developer` | SwiftUI, UIKit, Core Data |
+| Agent | `android-developer` | Kotlin, Jetpack Compose |
+| Agent | `swift-expert` | Swift 5.9+, async/await |
+| Agent | `flutter-expert` | Cross-platform Flutter/Dart |
+| Skill | `xcode-builder` | Build/test via XcodeBuildMCP |
+| Skill | `to-toon` | JSON/XML/YAML → TOON format |
+| Command | `pr-summary` | Generate PR summary from branch changes |
 
-**Skills** (`plugins/mobile-toolkit/skills/`):
-- `xcode-builder` - Build/test via XcodeBuildMCP tools
-- `to-toon` - Convert JSON/XML/YAML to token-efficient TOON format
+## XcodeBuildMCP
 
-## XcodeBuildMCP Integration
+Always use `preferXcodebuild: true` to prevent token overflow. Use `simulatorId` (UUID) instead of `simulatorName`.
 
-When working with Xcode projects, always use `preferXcodebuild: true` to prevent token overflow. Use simulator UUID (`simulatorId`) instead of name for reliability.
+## Git
 
-## Git Integration
-
-Do NOT use `git commit` directly - GitButler manages commits automatically.
+GitButler manages commits - do not use `git commit` directly.
