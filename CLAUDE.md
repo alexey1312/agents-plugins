@@ -28,6 +28,7 @@ plugins/
     skills/
       xcode-builder/        # XcodeBuildMCP integration
       to-toon/              # JSON/XML → TOON converter
+      xcsift/               # Parse xcodebuild output to TOON
     commands/
       pr-summary.md         # Generate PR summary from branch changes
 ```
@@ -121,6 +122,7 @@ Instructions...
 | Agent | `flutter-expert` | Cross-platform Flutter/Dart |
 | Skill | `xcode-builder` | Build/test via xcodebuild + xcsift TOON |
 | Skill | `to-toon` | JSON/XML/YAML → TOON format |
+| Skill | `xcsift` | Parse xcodebuild/swift output to TOON |
 | Command | `pr-summary` | Generate PR summary from branch changes |
 
 ## xcsift
@@ -132,6 +134,12 @@ swift build 2>&1 | xcsift -f toon --toon-key-folding safe
 ```
 
 Install: `brew install ldomaradzki/tap/xcsift`
+
+## Maintenance
+
+Keep documentation in sync when adding/removing components:
+- `CLAUDE.md` — Structure section and Available Components table
+- `marketplace.json` — Plugin description
 
 ## Git
 

@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "mobile-toolkit",
-      "description": "iOS, Android, Swift, Flutter agents + Xcode build skill",
+      "description": "iOS, Android, Swift, Flutter agents + xcode-builder, to-toon, xcsift skills",
       "source": "./mobile-toolkit",
       "category": "mobile"
     }
