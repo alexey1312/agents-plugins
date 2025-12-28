@@ -1,0 +1,55 @@
+{
+  "$schema": "https://claude.ai/schemas/hooks.json",
+  "description": "Mobile toolkit hooks for build automation and code quality",
+
+  "PreToolUse": [
+    {
+      "matcher": "Bash.*(swift build|xcodebuild)",
+      "description": "Suggest using xcsift for build output parsing",
+      "hooks": [
+        {
+          "type": "message",
+          "message": "Tip: Pipe to xcsift for structured output: `| xcsift -f toon`"
+        }
+      ]
+    }
+  ],
+
+  "PostToolUse": [
+    {
+      "matcher": "Edit.*\\.swift$",
+      "description": "Remind about SwiftLint after Swift file edits",
+      "hooks": [
+        {
+          "type": "message",
+          "message": "Consider running SwiftLint: `swiftlint lint --path <file>`"
+        }
+      ]
+    },
+    {
+      "matcher": "Bash.*xcodebuild.*test",
+      "description": "Suggest coverage analysis after tests",
+      "hooks": [
+        {
+          "type": "message",
+          "message": "Tests complete. Run `/analyze-build --coverage` for coverage report."
+        }
+      ]
+    }
+  ],
+
+  "suggestions": {
+    "swift_build": {
+      "trigger": "swift build",
+      "suggest": "swift build 2>&1 | xcsift -f toon --toon-key-folding safe"
+    },
+    "xcode_build": {
+      "trigger": "xcodebuild build",
+      "suggest": "xcodebuild build ... 2>&1 | xcsift -f toon"
+    },
+    "swift_test": {
+      "trigger": "swift test",
+      "suggest": "swift test --enable-code-coverage 2>&1 | xcsift -f toon -c"
+    }
+  }
+}
