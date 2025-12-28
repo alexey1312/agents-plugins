@@ -1,9 +1,21 @@
 {
   "name": "mobile-toolkit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Complete mobile development toolkit with agents and skills",
-  "author": "alexey1312",
+  "author": {
+    "name": "alexey1312",
+    "url": "https://github.com/alexey1312"
+  },
   "agents": "./agents",
   "skills": "./skills",
-  "commands": "./commands"
+  "commands": "./commands",
+  "model_defaults": {
+    "ios-developer": "opus",
+    "android-developer": "sonnet",
+    "swift-expert": "opus",
+    "flutter-expert": "sonnet"
+  },
+  "dependencies": {
+    "xcsift": "brew install ldomaradzki/tap/xcsift"
+  }
 }
