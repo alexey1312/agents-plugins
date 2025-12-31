@@ -6,12 +6,11 @@
     "name": "alexey1312",
     "url": "https://github.com/alexey1312"
   },
-  "pluginRoot": "./plugins",
   "plugins": [
     {
       "name": "mobile-toolkit",
       "description": "iOS, Android, Swift, Flutter agents + xcode-builder, to-toon, xcsift skills",
-      "source": "./mobile-toolkit",
+      "source": "./plugins/mobile-toolkit",
       "category": "mobile"
     }
   ]

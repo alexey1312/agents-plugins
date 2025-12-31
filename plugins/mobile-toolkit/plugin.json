@@ -9,7 +9,6 @@
   "agents": "./agents",
   "skills": "./skills",
   "commands": "./commands",
-  "hooks": "./hooks",
   "patterns": "./patterns",
   "model_defaults": {
     "ios-developer": "opus",
