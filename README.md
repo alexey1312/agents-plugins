@@ -1,4 +1,4 @@
-# aleksei-plugins
+# agents-plugins
 
 Private plugin marketplace with mobile development agents, skills, commands, and automation for Claude Code.
 

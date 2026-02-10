@@ -35,6 +35,14 @@ Create GitHub PR with auto-generated summary.
 - Auto-pushes branch if not on remote
 - Creates PR via GitHub CLI
 
+## Dependencies
+
+Requires `humanizer` plugin (included in this marketplace):
+
+```bash
+/plugin install humanizer@aleksei-plugins
+```
+
 ## Supported Branch Formats
 
 - `feature/PL-19452-description`
