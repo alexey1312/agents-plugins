@@ -1,0 +1,8 @@
+{
+  "name": "android-developer",
+  "description": "Native Android development agent with Kotlin, Jetpack Compose, and Material Design 3",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

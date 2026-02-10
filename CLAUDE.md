@@ -4,89 +4,102 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Private Claude Code plugin marketplace with mobile development agents, skills, commands, spawn patterns, and automation hooks.
+Private Claude Code plugin marketplace with mobile development agents, skills, commands, and automation hooks. Each component is an independent plugin with its own `plugin.json`, organized by category.
 
-**Version:** 1.2.0
+**Name:** `aleksei-plugins`
+**Version:** 1.0.0
 
-```bash
-# Install
-/plugin marketplace add alexey1312/agents-marketplace
-/plugin install mobile-toolkit@aleksei-agents
+## Documentation References
+
+- [Claude Code Plugins](https://docs.anthropic.com/en/docs/claude-code/plugins)
+- [Plugin Manifest](https://docs.anthropic.com/en/docs/claude-code/plugins#plugin-json)
+- [Marketplace Format](https://docs.anthropic.com/en/docs/claude-code/plugins#marketplace)
+
+## Plugin Structure
+
+Each plugin follows the same layout:
+
+```
+plugin-name/
+  .claude-plugin/
+    plugin.json       # Plugin manifest (name, description, version, author)
+  agents/             # Agent definitions (.md)
+  skills/             # Skill definitions (SKILL.md or .md)
+  commands/           # Command definitions (.md)
+  hooks/              # Hook definitions (hooks.json)
+  README.md           # Plugin documentation
 ```
 
-## Structure
+## Naming Conventions
+
+- **Plugin names**: kebab-case (`ios-developer`, `xcode-builder`, `review-swift`)
+- **File names**: match plugin name (`ios-developer.md`, `xcode-builder.md`)
+- **Directories**: match plugin name, nested under category
+
+## Plugin Manifest Format
+
+```json
+{
+  "name": "plugin-name",
+  "description": "What this plugin does",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}
+```
+
+## Marketplace Index Format
+
+`.claude-plugin/marketplace.json` registers all plugins:
+
+```json
+{
+  "name": "aleksei-plugins",
+  "version": "1.0.0",
+  "owner": { "name": "alexey1312" },
+  "plugins": [
+    {
+      "name": "plugin-name",
+      "description": "What it does",
+      "source": "./plugins/category/plugin-name",
+      "category": "development"
+    }
+  ]
+}
+```
+
+Categories: `development`, `productivity`
+
+## Plugin Organization
 
 ```
 .claude-plugin/
-  marketplace.json              # Marketplace catalog
+  plugin.json                              # Root manifest
+  marketplace.json                         # Registry (16 plugins)
+
 plugins/
-  mobile-toolkit/
-    plugin.json                 # Plugin manifest
-    agents/                     # Agent definitions
-      ios-developer.md
-      android-developer.md
-      swift-expert.md
-      flutter-expert.md
-    skills/                     # Auto-invoked skills
-      xcode-builder/
-      to-toon/
-      xcsift/
-      simulator-manager/
-      swiftlint-fixer/
-    commands/                   # Slash commands
-      spawn.md
-      pr-summary.md
-      review-swift.md
-      analyze-build.md
-      generate-changelog.md
-    patterns/                   # Spawn patterns
-      spawn-patterns.yml
-    hooks/                      # Automation hooks
-      hooks.json
+  agents/
+    ios-developer/                         # opus
+    android-developer/                     # opus
+    swift-expert/                          # opus
+    flutter-expert/                        # sonnet
+  skills/
+    xcode-builder/                         # Build/test with xcsift
+    to-toon/                               # JSON/XML/YAML → TOON
+    xcsift/                                # Swift build wrapper
+    simulator-manager/                     # iOS simulator management
+    swiftlint-fixer/                       # SwiftLint auto-fix
+    humanizer/                             # Remove AI writing patterns (github:blader/humanizer)
+  commands/
+    spawn/                                 # Parallel agent spawning
+    pr/                                    # PR workflow (summary + create)
+    review-swift/                          # Swift code review
+    analyze-build/                         # Build analysis
+    generate-changelog/                    # Changelog generation
+  hooks/
+    hooks-collection/                      # Build/lint automation hooks
 ```
-
-## Available Components
-
-### Agents (4)
-
-| Name | Model | Description |
-|------|-------|-------------|
-| `ios-developer` | opus | SwiftUI, UIKit, Core Data, networking |
-| `android-developer` | opus | Kotlin, Jetpack Compose, Material Design 3 |
-| `swift-expert` | opus | Swift 5.9+, async/await, protocol-oriented |
-| `flutter-expert` | sonnet | Cross-platform Flutter/Dart, state management |
-
-### Skills (5)
-
-| Name | Description |
-|------|-------------|
-| `xcode-builder` | Build/test via xcodebuild + xcsift TOON |
-| `to-toon` | JSON/XML/YAML → TOON format (30-60% savings) |
-| `xcsift` | Parse xcodebuild/swift output to TOON |
-| `simulator-manager` | Manage iOS simulators |
-| `swiftlint-fixer` | Auto-fix SwiftLint violations |
-
-### Commands (5)
-
-| Name | Description |
-|------|-------------|
-| `/spawn` | Parallel mobile agents with patterns |
-| `/pr-summary` | Generate PR summary from branch changes |
-| `/review-swift` | Comprehensive Swift code review |
-| `/analyze-build` | Analyze xcodebuild with xcsift + TOON |
-| `/generate-changelog` | Generate changelog from git commits |
-
-### Spawn Patterns (7)
-
-| Pattern | Agents | Description |
-|---------|--------|-------------|
-| `mobile_cross_platform` | ios, android, flutter | Parallel development |
-| `ios_feature_cycle` | ios, swift-expert | Implement → Review → PR |
-| `android_feature_cycle` | android, reviewer | Implement → Review → PR |
-| `build_pipeline` | xcode-builder, xcsift, to-toon | Build → Parse → TOON |
-| `swift_quality_review` | swift-expert, ios | Code quality review |
-| `flutter_native_integration` | flutter, ios, android | Native channels |
-| `dual_platform` | ios, android | Same feature, both platforms |
 
 ## Component Formats
 
@@ -102,7 +115,7 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 System prompt with instructions...
 ```
 
-### Skill (SKILL.md)
+### Skill (SKILL.md or .md)
 
 ```yaml
 ---
@@ -125,76 +138,51 @@ version: 1.0
 Instructions and workflow...
 ```
 
-### Pattern (.yml)
-
-```yaml
-pattern_name:
-  description: "What this pattern does"
-  orchestrator:
-    agent: agent-name
-    model: opus
-  workers:
-    - {agent: worker-name, model: sonnet, task: "Task description"}
-  example: "/spawn --pattern pattern_name 'task'"
-```
-
 ### Hooks (hooks.json)
 
 ```json
 {
   "PreToolUse": [{
     "matcher": "Bash.*swift build",
-    "hooks": [{"type": "message", "message": "Tip: Use xcsift"}]
+    "hooks": [{"type": "command", "command": "echo 'Tip'"}]
   }]
 }
 ```
 
-## Model Tiering
+## Model Selection
 
-| Task Type | Model | Use For |
+| Task Type | Model | Plugins |
 |-----------|-------|---------|
-| Architecture, Security | opus | ios, android, swift-expert |
-| Standard Development | sonnet | flutter-expert |
-| Simple Operations | haiku | Documentation, reports |
+| Architecture, Security | opus | ios-developer, android-developer, swift-expert |
+| Cross-platform, Standard | sonnet | flutter-expert |
+| Documentation, Reports | haiku | — |
+
+## Installation
+
+```bash
+# Add marketplace
+/plugin marketplace add alexey1312/agents-marketplace
+
+# Install individual plugins
+/plugin install ios-developer@aleksei-plugins
+/plugin install xcode-builder@aleksei-plugins
+/plugin install review-swift@aleksei-plugins
+```
 
 ## Dependencies
 
 ```bash
-brew install ldomaradzki/tap/xcsift
-brew install swiftlint
-```
-
-## Usage Examples
-
-### Spawn Patterns
-```bash
-/spawn --pattern mobile_cross_platform "Payment screen"
-/spawn --pattern ios_feature_cycle "Authentication"
-```
-
-### Commands
-```bash
-/review-swift Sources/Networking/
-/analyze-build --test --coverage
-/generate-changelog --unreleased
-```
-
-### Skills
-```
-"build the app for simulator"       # xcode-builder
-"convert to TOON format"            # to-toon
-"list available simulators"         # simulator-manager
-"fix SwiftLint issues"              # swiftlint-fixer
+brew install ldomaradzki/tap/xcsift   # xcode-builder, xcsift, analyze-build
+brew install swiftlint                 # swiftlint-fixer
 ```
 
 ## Maintenance
 
-Keep in sync when adding/removing components:
-- `CLAUDE.md` — Available Components tables
-- `README.md` — Contents section
-- `plugin.json` — Paths to new directories
-- `marketplace.json` — Plugin description
+When adding/removing plugins, keep in sync:
+- `.claude-plugin/marketplace.json` — plugin registry
+- `CLAUDE.md` — Plugin Organization tree
+- `README.md` — plugin tables and structure
 
 ## Git
 
-GitButler manages commits - do not use `git commit` directly.
+GitButler manages commits — do not use `git commit` directly.

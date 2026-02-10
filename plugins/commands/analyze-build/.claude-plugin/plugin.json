@@ -1,0 +1,8 @@
+{
+  "name": "analyze-build",
+  "description": "Analyze xcodebuild output with xcsift and convert to TOON format",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

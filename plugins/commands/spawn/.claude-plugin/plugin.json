@@ -1,0 +1,8 @@
+{
+  "name": "spawn",
+  "description": "Spawn parallel mobile agents for coordinated development",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

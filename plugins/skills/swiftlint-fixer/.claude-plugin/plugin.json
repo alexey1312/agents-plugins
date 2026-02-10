@@ -1,0 +1,8 @@
+{
+  "name": "swiftlint-fixer",
+  "description": "Automatically detect and fix SwiftLint violations in Swift code",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

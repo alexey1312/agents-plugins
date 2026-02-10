@@ -1,0 +1,8 @@
+{
+  "name": "ios-developer",
+  "description": "Native iOS development agent with Swift/SwiftUI, Core Data, UIKit, and networking",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

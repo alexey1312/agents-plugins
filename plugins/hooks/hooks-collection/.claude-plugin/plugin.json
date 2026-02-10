@@ -1,0 +1,8 @@
+{
+  "name": "hooks-collection",
+  "description": "Automation hooks for build suggestions, SwiftLint reminders, and coverage tips",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

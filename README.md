@@ -1,8 +1,8 @@
-# aleksei-agents
+# aleksei-plugins
 
-Private marketplace with mobile development agents, skills, commands, and automation for Claude Code.
+Private plugin marketplace with mobile development agents, skills, commands, and automation for Claude Code.
 
-**Version:** 1.2.0
+**Version:** 1.0.0
 
 ## Installation
 
@@ -10,63 +10,94 @@ Private marketplace with mobile development agents, skills, commands, and automa
 # Add marketplace
 /plugin marketplace add alexey1312/agents-marketplace
 
-# Install plugin
-/plugin install mobile-toolkit@aleksei-agents
+# Install individual plugins
+/plugin install ios-developer@aleksei-plugins
+/plugin install swift-expert@aleksei-plugins
+/plugin install xcode-builder@aleksei-plugins
+/plugin install review-swift@aleksei-plugins
 ```
 
-## Contents
+## Plugins
 
 ### Agents (4)
 
-| Agent | Model | Description |
-|-------|-------|-------------|
-| `ios-developer` | opus | Native iOS with Swift/SwiftUI, Core Data, UIKit |
-| `android-developer` | opus | Native Android with Kotlin/Jetpack Compose, Material Design 3 |
-| `swift-expert` | opus | Swift 5.9+ expert, async/await, protocol-oriented design |
-| `flutter-expert` | sonnet | Cross-platform Flutter with Dart, state management |
+| Plugin | Model | Category | Description |
+|--------|-------|----------|-------------|
+| `ios-developer` | opus | development | Native iOS with Swift/SwiftUI, Core Data, UIKit |
+| `android-developer` | opus | development | Native Android with Kotlin/Jetpack Compose, Material Design 3 |
+| `swift-expert` | opus | development | Swift 5.9+ expert, async/await, protocol-oriented design |
+| `flutter-expert` | sonnet | development | Cross-platform Flutter with Dart, state management |
 
-### Skills (5)
+### Skills (6)
 
-| Skill | Description |
-|-------|-------------|
-| `xcode-builder` | Build and test Xcode projects with xcsift integration |
-| `to-toon` | Convert JSON/XML/YAML to compact TOON format (30-60% token savings) |
-| `xcsift` | Parse xcodebuild output to TOON format |
-| `simulator-manager` | Manage iOS simulators - list, create, boot, configure |
-| `swiftlint-fixer` | Auto-detect and fix SwiftLint violations |
+| Plugin | Category | Description |
+|--------|----------|-------------|
+| `xcode-builder` | development | Build and test Xcode projects with xcsift integration |
+| `to-toon` | productivity | Convert JSON/XML/YAML to compact TOON format (30-60% token savings) |
+| `xcsift` | development | Parse xcodebuild output to TOON format |
+| `simulator-manager` | development | Manage iOS simulators — list, create, boot, configure |
+| `swiftlint-fixer` | development | Auto-detect and fix SwiftLint violations |
+| `humanizer` | productivity | Remove signs of AI-generated writing ([blader/humanizer](https://github.com/blader/humanizer)) |
 
 ### Commands (5)
 
-| Command | Description |
-|---------|-------------|
-| `/spawn` | Spawn parallel mobile agents with patterns |
-| `/pr-summary` | Generate PR summary from branch changes |
-| `/review-swift` | Comprehensive Swift code review |
-| `/analyze-build` | Analyze xcodebuild output with xcsift + TOON |
-| `/generate-changelog` | Generate changelog from git commits |
+| Plugin | Category | Description |
+|--------|----------|-------------|
+| `spawn` | development | Spawn parallel mobile agents for coordinated development |
+| `pr` | productivity | GitHub PR workflow: create PRs and generate summaries |
+| `review-swift` | development | Comprehensive Swift code review |
+| `analyze-build` | development | Analyze xcodebuild output with xcsift + TOON |
+| `generate-changelog` | productivity | Generate changelog from git commits |
 
-### Spawn Patterns (7)
+### Hooks (1)
 
-| Pattern | Description |
-|---------|-------------|
-| `mobile_cross_platform` | iOS + Android + Flutter parallel |
-| `ios_feature_cycle` | Implement → Review → PR |
-| `android_feature_cycle` | Implement → Review → PR |
-| `build_pipeline` | Build → Parse → TOON |
-| `swift_quality_review` | Code quality review |
-| `flutter_native_integration` | Flutter + native channels |
-| `dual_platform` | Same feature, iOS + Android |
+| Plugin | Category | Description |
+|--------|----------|-------------|
+| `hooks-collection` | productivity | Build suggestions, SwiftLint reminders, coverage tips |
 
-### Hooks
+## Structure
 
-Automation hooks for:
-- Suggest xcsift for build commands
-- Remind SwiftLint after Swift edits
-- Suggest coverage after tests
+```
+.
+├── .claude-plugin/
+│   ├── plugin.json
+│   └── marketplace.json
+├── plugins/
+│   ├── agents/
+│   │   ├── ios-developer/
+│   │   ├── android-developer/
+│   │   ├── swift-expert/
+│   │   └── flutter-expert/
+│   ├── skills/
+│   │   ├── xcode-builder/
+│   │   ├── to-toon/
+│   │   ├── xcsift/
+│   │   ├── simulator-manager/
+│   │   ├── swiftlint-fixer/
+│   │   └── humanizer/
+│   ├── commands/
+│   │   ├── spawn/
+│   │   ├── pr/
+│   │   ├── review-swift/
+│   │   ├── analyze-build/
+│   │   └── generate-changelog/
+│   └── hooks/
+│       └── hooks-collection/
+├── CLAUDE.md
+└── README.md
+```
+
+Each plugin contains:
+```
+plugin-name/
+  .claude-plugin/plugin.json
+  agents/ | skills/ | commands/ | hooks/
+  README.md
+```
 
 ## Usage
 
-### Using Agents
+### Agents
 ```
 "use ios-developer to review this SwiftUI code"
 "use android-developer to implement this feature in Compose"
@@ -74,74 +105,32 @@ Automation hooks for:
 "use flutter-expert to set up state management"
 ```
 
-### Using Spawn Patterns
+### Commands
 ```bash
-/spawn --pattern mobile_cross_platform "Payment screen"
-/spawn --pattern ios_feature_cycle "User authentication"
-/spawn --pattern build_pipeline
-```
-
-### Using Commands
-```bash
+/spawn --agents ios-developer,android-developer "Payment screen"
+/pr:summary
+/pr:create --draft
 /review-swift Sources/
 /analyze-build --test --coverage
 /generate-changelog --unreleased
 ```
 
-### Using Skills
-Skills are auto-invoked or explicitly called:
+### Skills
+Skills are auto-invoked:
 ```
-"build the app for simulator"  # triggers xcode-builder
-"convert this to TOON format"  # triggers to-toon
-```
-
-## Structure
-
-```
-.
-├── .claude-plugin/
-│   └── marketplace.json
-├── plugins/
-│   └── mobile-toolkit/
-│       ├── plugin.json
-│       ├── agents/
-│       │   ├── ios-developer.md
-│       │   ├── android-developer.md
-│       │   ├── swift-expert.md
-│       │   └── flutter-expert.md
-│       ├── skills/
-│       │   ├── xcode-builder/
-│       │   ├── to-toon/
-│       │   ├── xcsift/
-│       │   ├── simulator-manager/
-│       │   └── swiftlint-fixer/
-│       ├── commands/
-│       │   ├── spawn.md
-│       │   ├── pr-summary.md
-│       │   ├── review-swift.md
-│       │   ├── analyze-build.md
-│       │   └── generate-changelog.md
-│       ├── patterns/
-│       │   └── spawn-patterns.yml
-│       └── hooks/
-│           └── hooks.json
-└── README.md
+"build the app for simulator"       # xcode-builder
+"convert this to TOON format"       # to-toon
+"list available simulators"         # simulator-manager
+"fix SwiftLint issues"              # swiftlint-fixer
+"humanize this text"                # humanizer
 ```
 
 ## Dependencies
 
 ```bash
-# Required
-brew install ldomaradzki/tap/xcsift
-brew install swiftlint
+brew install ldomaradzki/tap/xcsift   # xcode-builder, xcsift, analyze-build
+brew install swiftlint                 # swiftlint-fixer
 ```
-
-## Model Tiering
-
-| Task Type | Model | Agents |
-|-----------|-------|--------|
-| Architecture, Security | opus | ios-developer, android-developer, swift-expert |
-| Cross-platform, Standard | sonnet | flutter-expert |
 
 ## License
 

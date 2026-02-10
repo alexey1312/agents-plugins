@@ -1,0 +1,9 @@
+{
+  "name": "aleksei-plugins",
+  "description": "Private plugin marketplace with mobile development agents, skills, and commands",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312",
+    "url": "https://github.com/alexey1312"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "swift-expert",
+  "description": "Expert Swift developer agent for Swift 5.9+, async/await, SwiftUI, and protocol-oriented programming",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

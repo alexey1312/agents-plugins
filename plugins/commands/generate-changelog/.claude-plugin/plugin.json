@@ -1,0 +1,8 @@
+{
+  "name": "generate-changelog",
+  "description": "Generate changelog from git commits following conventional commits format",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

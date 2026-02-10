@@ -1,0 +1,8 @@
+{
+  "name": "xcsift",
+  "description": "Parse xcodebuild and swift build output to structured TOON format",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

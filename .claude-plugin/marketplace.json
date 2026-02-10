@@ -1,6 +1,6 @@
 {
-  "name": "aleksei-agents",
-  "description": "Mobile development agents and Xcode build skill",
+  "name": "aleksei-plugins",
+  "description": "Private plugin marketplace with mobile development agents, skills, and commands",
   "version": "1.0.0",
   "owner": {
     "name": "alexey1312",
@@ -8,10 +8,100 @@
   },
   "plugins": [
     {
-      "name": "mobile-toolkit",
-      "description": "iOS, Android, Swift, Flutter agents + xcode-builder, to-toon, xcsift skills",
-      "source": "./plugins/mobile-toolkit",
-      "category": "mobile"
+      "name": "ios-developer",
+      "description": "Native iOS development agent with Swift/SwiftUI, Core Data, UIKit",
+      "source": "./plugins/agents/ios-developer",
+      "category": "development"
+    },
+    {
+      "name": "android-developer",
+      "description": "Native Android development agent with Kotlin, Jetpack Compose, Material Design 3",
+      "source": "./plugins/agents/android-developer",
+      "category": "development"
+    },
+    {
+      "name": "swift-expert",
+      "description": "Expert Swift developer agent for Swift 5.9+, async/await, protocol-oriented programming",
+      "source": "./plugins/agents/swift-expert",
+      "category": "development"
+    },
+    {
+      "name": "flutter-expert",
+      "description": "Cross-platform Flutter/Dart development agent with state management",
+      "source": "./plugins/agents/flutter-expert",
+      "category": "development"
+    },
+    {
+      "name": "xcode-builder",
+      "description": "Build and test Swift/Xcode projects with xcsift TOON output",
+      "source": "./plugins/skills/xcode-builder",
+      "category": "development"
+    },
+    {
+      "name": "to-toon",
+      "description": "Convert JSON/XML/YAML to compact TOON format (30-60% token savings)",
+      "source": "./plugins/skills/to-toon",
+      "category": "productivity"
+    },
+    {
+      "name": "xcsift",
+      "description": "Parse xcodebuild and swift build output to structured TOON format",
+      "source": "./plugins/skills/xcsift",
+      "category": "development"
+    },
+    {
+      "name": "simulator-manager",
+      "description": "Manage iOS simulators - list, create, boot, and configure",
+      "source": "./plugins/skills/simulator-manager",
+      "category": "development"
+    },
+    {
+      "name": "swiftlint-fixer",
+      "description": "Auto-detect and fix SwiftLint violations in Swift code",
+      "source": "./plugins/skills/swiftlint-fixer",
+      "category": "development"
+    },
+    {
+      "name": "spawn",
+      "description": "Spawn parallel mobile agents for coordinated development",
+      "source": "./plugins/commands/spawn",
+      "category": "development"
+    },
+    {
+      "name": "pr",
+      "description": "GitHub PR workflow: create PRs and generate summaries",
+      "source": "./plugins/commands/pr",
+      "category": "productivity"
+    },
+    {
+      "name": "review-swift",
+      "description": "Comprehensive Swift code review using swift-expert agent",
+      "source": "./plugins/commands/review-swift",
+      "category": "development"
+    },
+    {
+      "name": "analyze-build",
+      "description": "Analyze xcodebuild output with xcsift and TOON format",
+      "source": "./plugins/commands/analyze-build",
+      "category": "development"
+    },
+    {
+      "name": "generate-changelog",
+      "description": "Generate changelog from git commits with conventional commits",
+      "source": "./plugins/commands/generate-changelog",
+      "category": "productivity"
+    },
+    {
+      "name": "hooks-collection",
+      "description": "Automation hooks for build suggestions, SwiftLint reminders, and coverage tips",
+      "source": "./plugins/hooks/hooks-collection",
+      "category": "productivity"
+    },
+    {
+      "name": "humanizer",
+      "description": "Remove signs of AI-generated writing from text",
+      "source": "github:blader/humanizer",
+      "category": "productivity"
     }
   ]
 }
