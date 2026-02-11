@@ -98,6 +98,12 @@
       "category": "productivity"
     },
     {
+      "name": "branch-recall",
+      "description": "Recall branch context - analyze what was done to continue work",
+      "source": "./plugins/skills/branch-recall",
+      "category": "productivity"
+    },
+    {
       "name": "humanizer",
       "description": "Remove signs of AI-generated writing from text",
       "source": "github:blader/humanizer",

@@ -28,7 +28,7 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 | `swift-expert` | opus | development | Swift 5.9+ expert, async/await, protocol-oriented design |
 | `flutter-expert` | sonnet | development | Cross-platform Flutter with Dart, state management |
 
-### Skills (6)
+### Skills (7)
 
 | Plugin | Category | Description |
 |--------|----------|-------------|
@@ -37,6 +37,7 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 | `xcsift` | development | Parse xcodebuild output to TOON format |
 | `simulator-manager` | development | Manage iOS simulators — list, create, boot, configure |
 | `swiftlint-fixer` | development | Auto-detect and fix SwiftLint violations |
+| `branch-recall` | productivity | Recall branch context — analyze what was done to continue work |
 | `humanizer` | productivity | Remove signs of AI-generated writing ([blader/humanizer](https://github.com/blader/humanizer)) |
 
 ### Commands (5)
@@ -74,6 +75,7 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 │   │   ├── xcsift/
 │   │   ├── simulator-manager/
 │   │   ├── swiftlint-fixer/
+│   │   ├── branch-recall/
 │   │   └── humanizer/
 │   ├── commands/
 │   │   ├── spawn/
@@ -122,6 +124,7 @@ Skills are auto-invoked:
 "convert this to TOON format"       # to-toon
 "list available simulators"         # simulator-manager
 "fix SwiftLint issues"              # swiftlint-fixer
+"recall what was done in this branch" # branch-recall
 "humanize this text"                # humanizer
 ```
 
