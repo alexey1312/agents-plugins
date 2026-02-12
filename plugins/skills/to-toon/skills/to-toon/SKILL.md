@@ -1,11 +1,9 @@
 ---
 name: to-toon
 description: >
-  Convert any structured data to TOON format (Token-Oriented Object Notation).
-  Use this skill when: 1) You have JSON, XML, or YAML data to compress,
-  2) User asks to convert data to TOON for token efficiency,
-  3) Working with Figma MCP output, API responses, or config files.
-  TOON reduces tokens by 30-60% compared to JSON while maintaining structure.
+  Converts structured data (JSON, XML, YAML) to compact TOON format (Token-Oriented Object
+  Notation) with 30-60% token savings. Use when compressing API responses, Figma MCP output,
+  config files, or any structured data for token efficiency.
 ---
 
 # Universal TOON Converter

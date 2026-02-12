@@ -1,6 +1,6 @@
 {
   "name": "to-toon",
-  "description": "Convert JSON/XML/YAML to compact TOON format with 30-60% token savings",
+  "description": "Converts JSON/XML/YAML to compact TOON format with 30-60% token savings",
   "version": "1.0.0",
   "author": {
     "name": "alexey1312"

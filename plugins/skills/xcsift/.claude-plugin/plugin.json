@@ -1,6 +1,6 @@
 {
   "name": "xcsift",
-  "description": "Parse xcodebuild and swift build output to structured TOON format",
+  "description": "Wraps swift and xcodebuild commands through xcsift for structured TOON output",
   "version": "1.0.0",
   "author": {
     "name": "alexey1312"

@@ -1,6 +1,8 @@
 ---
 name: swiftlint-fixer
-description: Automatically detect and fix SwiftLint violations in Swift code
+description: >
+  Detects and auto-fixes SwiftLint violations in Swift code. Use when linting Swift files,
+  fixing code style issues, running swiftlint, or preparing code for PR review.
 ---
 
 # SwiftLint Fixer
@@ -26,29 +28,8 @@ swiftlint lint --path Sources/MyFile.swift
 brew install swiftlint
 ```
 
-## Commands
+## Auto-Fix
 
-### Linting
-```bash
-# Lint with default config
-swiftlint lint
-
-# Lint specific paths
-swiftlint lint --path Sources/ --path Tests/
-
-# Quiet mode (errors only)
-swiftlint lint --quiet
-
-# Strict mode (warnings as errors)
-swiftlint lint --strict
-
-# Reporter formats
-swiftlint lint --reporter json
-swiftlint lint --reporter html > report.html
-swiftlint lint --reporter github-actions-logging  # For CI
-```
-
-### Auto-Fix
 ```bash
 # Fix all correctable violations
 swiftlint lint --fix
@@ -60,90 +41,32 @@ swiftlint lint --fix --path MyFile.swift
 swiftlint lint --fix --dry-run
 ```
 
-### Analysis
-```bash
-# Analyze (deeper checks, slower)
-swiftlint analyze
+## Baseline (for legacy codebases)
 
-# Generate baseline
+```bash
+# Generate baseline — snapshot current violations
 swiftlint lint --baseline baseline.json
 
-# Lint against baseline (only new violations)
+# Lint against baseline — only report new violations
 swiftlint lint --baseline baseline.json
 ```
 
 ## Configuration
 
-### .swiftlint.yml
-```yaml
-# Paths to include
-included:
-  - Sources
-  - Tests
+### .swiftlint.yml (key sections)
 
-# Paths to exclude
+```yaml
 excluded:
   - Pods
   - Carthage
   - Generated
 
-# Disable rules
-disabled_rules:
-  - trailing_whitespace
-  - line_length
-
-# Enable opt-in rules
 opt_in_rules:
-  - empty_count
-  - empty_string
-  - closure_end_indentation
-  - contains_over_filter_count
-  - discouraged_optional_boolean
-  - explicit_init
-  - fatal_error_message
-  - first_where
   - force_unwrapping
   - implicitly_unwrapped_optional
-  - modifier_order
-  - multiline_arguments
-  - multiline_parameters
-  - overridden_super_call
-  - private_action
-  - private_outlet
-  - prohibited_super_call
-  - redundant_nil_coalescing
-  - single_test_class
-  - sorted_first_last
-  - unneeded_parentheses_in_closure_argument
-  - vertical_parameter_alignment_on_call
+  - fatal_error_message
+  - contains_over_filter_count
 
-# Rule configuration
-line_length:
-  warning: 120
-  error: 200
-
-type_body_length:
-  warning: 300
-  error: 500
-
-file_length:
-  warning: 500
-  error: 1000
-
-identifier_name:
-  min_length: 2
-  max_length: 50
-  excluded:
-    - id
-    - x
-    - y
-    - i
-    - j
-
-nesting:
-  type_level: 2
-
-# Custom rules
 custom_rules:
   no_print:
     name: "No print statements"
@@ -158,10 +81,8 @@ custom_rules:
 | Rule | Before | After |
 |------|--------|-------|
 | `trailing_whitespace` | `let x = 1   ` | `let x = 1` |
-| `trailing_newline` | (no newline at EOF) | (newline at EOF) |
 | `trailing_semicolon` | `let x = 1;` | `let x = 1` |
 | `colon` | `let x :Int` | `let x: Int` |
-| `comma` | `func(a:1,b:2)` | `func(a: 1, b: 2)` |
 | `opening_brace` | `func foo(){` | `func foo() {` |
 | `redundant_optional_initialization` | `var x: Int? = nil` | `var x: Int?` |
 | `redundant_void_return` | `-> Void` | (removed) |
@@ -172,41 +93,15 @@ custom_rules:
 | `force_cast` | `as!` | Use `as?` with guard |
 | `force_unwrapping` | `!` | Use `if let` or `guard` |
 | `line_length` | >120 chars | Break into multiple lines |
-| `cyclomatic_complexity` | Complex function | Refactor into smaller functions |
-| `function_body_length` | >40 lines | Extract into helper methods |
+| `cyclomatic_complexity` | Complex function | Extract into smaller functions |
 
-## Workflow
+## CI Integration
 
-### Pre-Commit Hook
-```bash
-#!/bin/sh
-# .git/hooks/pre-commit
-
-# Run SwiftLint
-if which swiftlint >/dev/null; then
-  swiftlint lint --strict
-else
-  echo "warning: SwiftLint not installed"
-fi
-```
-
-### CI Integration
 ```yaml
 # GitHub Actions
 - name: SwiftLint
   run: |
     swiftlint lint --strict --reporter github-actions-logging
-```
-
-### Fix Before PR
-```bash
-# Auto-fix what's possible
-swiftlint lint --fix
-
-# Check remaining issues
-swiftlint lint --strict
-
-# If issues remain, fix manually
 ```
 
 ## Integration with Mobile Toolkit
@@ -225,10 +120,6 @@ swiftlint lint --strict && /analyze-build
 
 ## Tips
 
-1. Add `.swiftlint.yml` to project root
-2. Use `--fix` before commits
-3. Use `--baseline` for legacy codebases
-4. Enable `github-actions-logging` in CI
-5. Configure IDE integration for real-time feedback
-6. Start with fewer rules, add gradually
-7. Use `excluded` for generated code
+1. Use `--baseline` for legacy codebases — lint only new violations
+2. Enable `github-actions-logging` reporter in CI
+3. Use `excluded` for generated code

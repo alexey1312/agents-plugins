@@ -1,6 +1,9 @@
 ---
 name: branch-recall
-description: Use when starting work on an existing branch to recall what was already done. Analyzes commits, changed files, and diffs to rebuild context. Invoke with /branch-recall or /branch-recall --deep for full file reading.
+description: >
+  Recovers context of the current git branch by analyzing commits, changed files, and diffs
+  since diverging from main. Use when resuming work on an existing feature branch or
+  onboarding to unfamiliar branch changes. Supports --deep flag for full file reading.
 ---
 
 # Branch Recall

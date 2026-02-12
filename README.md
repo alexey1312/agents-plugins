@@ -32,13 +32,13 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 
 | Plugin | Category | Description |
 |--------|----------|-------------|
-| `xcode-builder` | development | Build and test Xcode projects with xcsift integration |
-| `to-toon` | productivity | Convert JSON/XML/YAML to compact TOON format (30-60% token savings) |
-| `xcsift` | development | Parse xcodebuild output to TOON format |
-| `simulator-manager` | development | Manage iOS simulators — list, create, boot, configure |
-| `swiftlint-fixer` | development | Auto-detect and fix SwiftLint violations |
-| `branch-recall` | productivity | Recall branch context — analyze what was done to continue work |
-| `humanizer` | productivity | Remove signs of AI-generated writing ([blader/humanizer](https://github.com/blader/humanizer)) |
+| `xcode-builder` | development | Builds and tests Swift/Xcode projects with xcsift TOON output |
+| `to-toon` | productivity | Converts JSON/XML/YAML to compact TOON format (30-60% token savings) |
+| `xcsift` | development | Wraps swift/xcodebuild commands through xcsift for TOON output |
+| `simulator-manager` | development | Manages iOS simulators — list, create, boot, configure devices |
+| `swiftlint-fixer` | development | Detects and auto-fixes SwiftLint violations in Swift code |
+| `branch-recall` | productivity | Recovers branch context — analyzes commits and diffs to continue work |
+| `humanizer` | productivity | Identifies and removes AI-generated writing patterns ([blader/humanizer](https://github.com/blader/humanizer)) |
 
 ### Commands (5)
 

@@ -1,6 +1,6 @@
 {
   "name": "branch-recall",
-  "description": "Recall branch context - analyze what was done in the current branch to continue work",
+  "description": "Recovers branch context by analyzing commits, changed files, and diffs",
   "version": "1.0.1",
   "author": {
     "name": "alexey1312"

@@ -33,31 +33,31 @@
     },
     {
       "name": "xcode-builder",
-      "description": "Build and test Swift/Xcode projects with xcsift TOON output",
+      "description": "Builds and tests Swift/Xcode projects with xcsift TOON output",
       "source": "./plugins/skills/xcode-builder",
       "category": "development"
     },
     {
       "name": "to-toon",
-      "description": "Convert JSON/XML/YAML to compact TOON format (30-60% token savings)",
+      "description": "Converts JSON/XML/YAML to compact TOON format (30-60% token savings)",
       "source": "./plugins/skills/to-toon",
       "category": "productivity"
     },
     {
       "name": "xcsift",
-      "description": "Parse xcodebuild and swift build output to structured TOON format",
+      "description": "Wraps swift/xcodebuild commands through xcsift for structured TOON output",
       "source": "./plugins/skills/xcsift",
       "category": "development"
     },
     {
       "name": "simulator-manager",
-      "description": "Manage iOS simulators - list, create, boot, and configure",
+      "description": "Manages iOS simulators — list, create, boot, and configure devices",
       "source": "./plugins/skills/simulator-manager",
       "category": "development"
     },
     {
       "name": "swiftlint-fixer",
-      "description": "Auto-detect and fix SwiftLint violations in Swift code",
+      "description": "Detects and auto-fixes SwiftLint violations in Swift code",
       "source": "./plugins/skills/swiftlint-fixer",
       "category": "development"
     },
@@ -99,13 +99,13 @@
     },
     {
       "name": "branch-recall",
-      "description": "Recall branch context - analyze what was done to continue work",
+      "description": "Recovers branch context by analyzing commits and diffs to continue work",
       "source": "./plugins/skills/branch-recall",
       "category": "productivity"
     },
     {
       "name": "humanizer",
-      "description": "Remove signs of AI-generated writing from text",
+      "description": "Identifies and removes signs of AI-generated writing from text",
       "source": "github:blader/humanizer",
       "category": "productivity"
     }

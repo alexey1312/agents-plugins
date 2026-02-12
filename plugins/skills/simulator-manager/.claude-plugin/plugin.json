@@ -1,6 +1,6 @@
 {
   "name": "simulator-manager",
-  "description": "Manage iOS simulators - list, create, boot, and configure for testing",
+  "description": "Manages iOS simulators via xcrun simctl — list, create, boot, and configure devices",
   "version": "1.0.0",
   "author": {
     "name": "alexey1312"

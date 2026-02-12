@@ -1,10 +1,9 @@
 ---
 name: xcsift
 description: >
-  Use /usr/local/bin/xcsift for all Swift and Xcode build operations.
-  This skill overrides default swift/xcodebuild commands to use the xcsift wrapper.
-  Activate when: 1) Building Swift packages, 2) Running xcodebuild commands,
-  3) Any Swift compilation or Xcode project operations.
+  Wraps all swift and xcodebuild commands through /usr/local/bin/xcsift for structured
+  TOON output. Use when building Swift packages, running xcodebuild, or performing any
+  Swift compilation.
 ---
 
 # XCSift Build System
@@ -96,15 +95,7 @@ All Swift and Xcode build operations MUST use `/usr/local/bin/xcsift` instead of
 ## Important Notes
 
 1. **Always use the full path** `/usr/local/bin/xcsift` to ensure the correct binary is used
-2. **All arguments are passed through** - any swift/xcodebuild arguments work the same way
-3. **This applies to all build-related operations** including:
-   - Building
-   - Testing
-   - Running
-   - Cleaning
-   - Package management
-   - Archive creation
-   - Code signing operations
+2. **All arguments are passed through** — any swift/xcodebuild arguments work the same way
 
 ## MCP XcodeBuildMCP Integration
 

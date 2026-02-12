@@ -1,6 +1,9 @@
 ---
 name: xcode-builder
-description: Build and test Swift/Xcode projects using xcodebuild/swift commands with xcsift for TOON output. Use when user asks to build, test, or run iOS/macOS apps.
+description: >
+  Builds and tests Swift/Xcode projects using xcodebuild and swift commands with xcsift
+  for TOON output. Use when building, testing, or running iOS/macOS apps, Swift packages,
+  or Xcode workspaces.
 ---
 
 # Xcode Builder Skill
@@ -158,19 +161,6 @@ summary:
   duration: 8.3s
 ```
 
-## Project Discovery
-
-```bash
-# Find Xcode projects
-find . -name "*.xcodeproj" -o -name "*.xcworkspace" | head -5
-
-# List schemes
-xcodebuild -list -workspace Project.xcworkspace 2>/dev/null | grep -A 100 "Schemes:" | tail -n +2
-
-# List available simulators
-xcrun simctl list devices available --json | jq '.devices | to_entries[] | .value[] | "\(.name) - \(.udid)"'
-```
-
 ## Common Workflows
 
 ### Quick Build Check
@@ -197,8 +187,5 @@ GITHUB_ACTIONS=true xcodebuild test \
 
 ## Best Practices
 
-- **Always use `2>&1`** - captures stderr for complete error output
-- **Use `--toon-key-folding safe`** - reduces tokens for TOON 3.0 compatibility
-- **Use `-q` for CI** - quiet mode suppresses success output
-- **Cache simulator UUID** - avoid repeated lookups
-- **Prefer `-f toon`** - 30-60% fewer tokens than JSON
+- **Cache simulator UUID** — avoid repeated lookups
+- **Use `-q` for CI** — quiet mode suppresses success output

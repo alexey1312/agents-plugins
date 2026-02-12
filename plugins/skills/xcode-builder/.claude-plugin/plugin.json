@@ -1,6 +1,6 @@
 {
   "name": "xcode-builder",
-  "description": "Build and test Swift/Xcode projects using xcodebuild with xcsift TOON output",
+  "description": "Builds and tests Swift/Xcode projects with xcsift TOON output",
   "version": "1.0.0",
   "author": {
     "name": "alexey1312"
