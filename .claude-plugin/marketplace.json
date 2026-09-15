@@ -62,6 +62,12 @@
       "category": "development"
     },
     {
+      "name": "ios27-app-intents",
+      "description": "Adopts and audits iOS 27 App Intents for Siri, Apple Intelligence, Spotlight, and Shortcuts",
+      "source": "./plugins/skills/ios27-app-intents",
+      "category": "development"
+    },
+    {
       "name": "spawn",
       "description": "Spawn parallel mobile agents for coordinated development",
       "source": "./plugins/commands/spawn",
