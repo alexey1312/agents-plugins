@@ -1,0 +1,8 @@
+{
+  "name": "ios27-app-intents",
+  "description": "Adopts and audits iOS 27 App Intents for Siri, Apple Intelligence, Spotlight, and Shortcuts",
+  "version": "1.0.0",
+  "author": {
+    "name": "alexey1312"
+  }
+}

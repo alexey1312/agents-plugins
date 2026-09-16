@@ -62,6 +62,18 @@
       "category": "development"
     },
     {
+      "name": "ios27-app-intents",
+      "description": "Adopts and audits iOS 27 App Intents for Siri, Apple Intelligence, Spotlight, and Shortcuts",
+      "source": "./plugins/skills/ios27-app-intents",
+      "category": "development"
+    },
+    {
+      "name": "swiftui-expert",
+      "description": "SwiftUI state management, view composition, performance, SDK 27 APIs, and Liquid Glass (github:AvdLee/SwiftUI-Agent-Skill)",
+      "source": "github:AvdLee/SwiftUI-Agent-Skill",
+      "category": "development"
+    },
+    {
       "name": "spawn",
       "description": "Spawn parallel mobile agents for coordinated development",
       "source": "./plugins/commands/spawn",

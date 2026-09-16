@@ -76,7 +76,7 @@ Categories: `development`, `productivity`
 ```
 .claude-plugin/
   plugin.json                              # Root manifest
-  marketplace.json                         # Registry (17 plugins)
+  marketplace.json                         # Registry (19 plugins)
 
 plugins/
   agents/
@@ -90,6 +90,7 @@ plugins/
     xcsift/                                # Swift build wrapper
     simulator-manager/                     # iOS simulator management
     swiftlint-fixer/                       # SwiftLint auto-fix
+    ios27-app-intents/                     # iOS 27 App Intents adoption + audit
     branch-recall/                         # Recall branch context to continue work
     humanizer/                             # Remove AI writing patterns (github:blader/humanizer)
   commands/
@@ -101,6 +102,13 @@ plugins/
   hooks/
     hooks-collection/                      # Build/lint automation hooks
 ```
+
+### External plugins
+
+Registered in `marketplace.json` by upstream reference — no local directory, updates come from
+the source repository:
+
+- `swiftui-expert` — `github:AvdLee/SwiftUI-Agent-Skill` (SwiftUI, SDK 27, Liquid Glass)
 
 ## Component Formats
 
