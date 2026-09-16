@@ -15,6 +15,7 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 /plugin install swift-expert@aleksei-plugins
 /plugin install xcode-builder@aleksei-plugins
 /plugin install review-swift@aleksei-plugins
+/plugin install swiftui-expert@aleksei-plugins
 ```
 
 ## Plugins
@@ -28,7 +29,7 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 | `swift-expert` | opus | development | Swift 5.9+ expert, async/await, protocol-oriented design |
 | `flutter-expert` | sonnet | development | Cross-platform Flutter with Dart, state management |
 
-### Skills (8)
+### Skills (9)
 
 | Plugin | Category | Description |
 |--------|----------|-------------|
@@ -38,6 +39,7 @@ Private plugin marketplace with mobile development agents, skills, commands, and
 | `simulator-manager` | development | Manages iOS simulators — list, create, boot, configure devices |
 | `swiftlint-fixer` | development | Detects and auto-fixes SwiftLint violations in Swift code |
 | `ios27-app-intents` | development | Adopts and audits iOS 27 App Intents for Siri, Apple Intelligence, Spotlight, Shortcuts |
+| `swiftui-expert` | development | SwiftUI state, composition, performance, SDK 27, Liquid Glass ([AvdLee/SwiftUI-Agent-Skill](https://github.com/AvdLee/SwiftUI-Agent-Skill)) |
 | `branch-recall` | productivity | Recovers branch context — analyzes commits and diffs to continue work |
 | `humanizer` | productivity | Identifies and removes AI-generated writing patterns ([blader/humanizer](https://github.com/blader/humanizer)) |
 
@@ -127,6 +129,7 @@ Skills are auto-invoked:
 "list available simulators"         # simulator-manager
 "fix SwiftLint issues"              # swiftlint-fixer
 "add Siri support for this entity"  # ios27-app-intents
+"review this SwiftUI view"          # swiftui-expert
 "recall what was done in this branch" # branch-recall
 "humanize this text"                # humanizer
 ```

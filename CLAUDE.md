@@ -76,7 +76,7 @@ Categories: `development`, `productivity`
 ```
 .claude-plugin/
   plugin.json                              # Root manifest
-  marketplace.json                         # Registry (18 plugins)
+  marketplace.json                         # Registry (19 plugins)
 
 plugins/
   agents/
@@ -102,6 +102,13 @@ plugins/
   hooks/
     hooks-collection/                      # Build/lint automation hooks
 ```
+
+### External plugins
+
+Registered in `marketplace.json` by upstream reference — no local directory, updates come from
+the source repository:
+
+- `swiftui-expert` — `github:AvdLee/SwiftUI-Agent-Skill` (SwiftUI, SDK 27, Liquid Glass)
 
 ## Component Formats
 
